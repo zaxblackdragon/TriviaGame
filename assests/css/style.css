@@ -1,0 +1,15 @@
+body {
+    background: black;
+}
+#masterContainer {
+    background: blue;
+    color: white;
+    text-align: center;
+}
+#masterCol {
+    background: pink;
+}
+h1 {
+    display: inline-block;
+    text-align: center;
+}
