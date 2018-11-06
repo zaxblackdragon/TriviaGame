@@ -21,13 +21,18 @@ $(document).ready(function () {
         var questions = [
             {
                 questionOne: "What is your Fav color?",
-                answers: ["blue", "yellow"],
+                answers: ["blue", "yellow", "green", "orange"],
                 correctAnswer: "yellow",
             }
         ];
     
-    // sets the timer disply to 20 sec
+    // sets the timer disply to 5 sec on load
     $("#display-timer").text("Time Left = " + countDown + " sec");
+    $("#questions").text(questions[0].questionOne);
+    $("#choiceA").append(questions[0].answers[0]);
+    $("#choiceB").append(questions[0].answers[1]);
+    $("#choiceC").append(questions[0].answers[2]);
+    $("#choiceD").append(questions[0].answers[3]);
     // sets the interval
     function timerInterval() {
         timer = setInterval(counter, 1000);
@@ -40,7 +45,6 @@ $(document).ready(function () {
     //counts down the timer
     function counter() {
         countDown--;
-        var choiceButton = $("<button>");
         $("#display-timer").text("Time Left = " + countDown + " sec");
         if (countDown <= 0) {
             clearInterval(timer);
@@ -53,13 +57,10 @@ $(document).ready(function () {
         // starts the countdown
         //  bug in the counter when clicked more than once
         $("#playGame").on('click', function(){
-            
             $("#display-timer").empty();
             $("#display-timer").text("Time Remaining: " + countDown + " seconds");
-            $("#questions").text(questions[0].questionOne);
             timerInterval();
             counter();
-          
         });
 
 
