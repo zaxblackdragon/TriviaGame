@@ -25,7 +25,9 @@ $(document).ready(function () {
                 correctAnswer: "yellow",
             }
         ];
-
+    
+    // sets the timer disply to 20 sec
+    $("#display-timer").text("Time Left = " + countDown + " sec");
     // sets the interval
     function timerInterval() {
         timer = setInterval(counter, 1000);
@@ -39,47 +41,46 @@ $(document).ready(function () {
 
         }
     };
-        // sets the timmer on the page
+        // starts the countdown
+        //  bug in the counter when clicked more than once
         $("#playGame").on('click', function(){
-    
+            
             $("#display-timer").empty();
             $("#display-timer").text("Time Remaining: " + countDown + " seconds");
             timerInterval();
             counter();
-
-            
         });
 
    
      
      
  //Mike's code for timerbelow
-     function timer() {
-        intervalID = setInterval(countdown, 1000)
-     };
+    //  function timer() {
+    //     intervalID = setInterval(countdown, 1000)
+    //  };
      
-     function countdown() {
-        time--;
-        $("#time-display").text("Time left: " + time);
-        if (time === 0) {
-            unAnswered++;
-            console.log(unAnswered);
-            stop();
-            $("#time-display").text("Time's up!");
-            displayQuestion(quizQuestions2[questionIndex++]);
-            reset();
-        }
-     };
+    //  function countdown() {
+    //     time--;
+    //     $("#time-display").text("Time left: " + time);
+    //     if (time === 0) {
+    //         unAnswered++;
+    //         console.log(unAnswered);
+    //         stop();
+    //         $("#time-display").text("Time's up!");
+    //         displayQuestion(quizQuestions2[questionIndex++]);
+    //         reset();
+    //     }
+    //  };
      
-     function stop() {
-        clearInterval(intervalID)
-     };
+    //  function stop() {
+    //     clearInterval(intervalID)
+    //  };
      
-     function reset() {
-        clearInterval(intervalID);
-        time = 25;
-        timer();
-     };
+    //  function reset() {
+    //     clearInterval(intervalID);
+    //     time = 25;
+    //     timer();
+    //  };
 
     //  function newQuestion() {
     //     timer = setInterval(countDown, 1000);
