@@ -13,11 +13,11 @@ $(document).ready(function () {
         //  at the end - show results
 
         var timer;
-        var countDown = 5;
+        var countDown = 10;
      
         var correctAcc = 0;
-        var incorrect = 0;
-        var currentQuestion;
+        var incorrectAcc = 0;
+        var currentTime;
         var questions = [
             {
                 questionOne: "What is your Fav color?",
@@ -39,8 +39,9 @@ $(document).ready(function () {
     };
 
     function resetCountDown() {
-        countDown = 5;
+        countDown = 10;
     }
+
 
     //counts down the timer
     function counter() {
@@ -59,10 +60,68 @@ $(document).ready(function () {
         $("#playGame").on('click', function(){
             $("#display-timer").empty();
             $("#display-timer").text("Time Remaining: " + countDown + " seconds");
+
             timerInterval();
             counter();
+            
+        });
+        //stores the value of button a to a var
+        $("#choiceA").on("click", function(){
+            if (countDown > 0 && countDown < 10) {
+                var buttonVal = questions[0].answers[0];
+               
+                if (buttonVal === questions[0].correctAnswer) {
+                    correctAcc++;
+                    $("#correct").empty();
+                    $("#correct").append("Correct Answers: " + correctAcc);
+                    
+                } else {
+                    incorrectAcc++;
+                    $("#incorrect").empty();
+                    $("#incorrect").append("Incorrect Answers: " +  incorrectAcc);
+                    
+                }
+            }
         });
 
+
+        //stores the value of button b to a var
+        // $("#choiceB").on("click", function(){
+        //     if (countDown > 0 && countDown < 10) {
+        //         var buttonVal = questions[0].answers[1];
+        //         if (buttonVal !== questions[0].correctAnswer) {
+        //             incorrectAcc++;  
+        //             console.log(incorrectAcc);
+        //         }
+        //     }
+        // });
+
+        //stores the value of button c to a var
+        // $("#choiceC").on("click", function(){
+        //     if (countDown > 0 && countDown < 10) {
+        //         var buttonVal = questions[0].answers[2];
+        //         if (buttonVal === questions[0].correctAnswer) {
+        //             correctAcc++;
+        //             console.log("correct = " + correctAcc);
+        //         } else {
+        //             incorrectAcc++;
+        //             console.log("incorrect = " + incorrectAcc);
+        //         }
+        //     }
+        // });
+        //stores the value of button d to a var
+        // $("#choiceD").on("click", function(){
+        //     if (countDown > 0 && countDown < 10) {
+        //         var buttonVal = questions[0].answers[3];
+        //         if (buttonVal === questions[0].correctAnswer) {
+        //             correctAcc++;
+        //             console.log("correct = " + correctAcc);
+        //         } else {
+        //             incorrectAcc++;
+        //             console.log("incorrect = " + incorrectAcc);
+        //         }
+        //     }
+        // });
 
      
      
