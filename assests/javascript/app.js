@@ -20,9 +20,9 @@ $(document).ready(function () {
         var currentTime;
         var questions = [
             {
-                questionOne: "What is your Fav color?",
-                answers: ["blue", "yellow", "green", "orange"],
-                correctAnswer: "yellow",
+                questionOne: "Which hurricane devastated New Orleans in 2005?",
+                answers: ["Ike", "Katrina", "Albert", "Doris"],
+                correctAnswer: "Katrina",
             }
         ];
     
@@ -58,70 +58,90 @@ $(document).ready(function () {
         // starts the countdown
         //  bug in the counter when clicked more than once
         $("#playGame").on('click', function(){
-            $("#display-timer").empty();
-            $("#display-timer").text("Time Remaining: " + countDown + " seconds");
+           
+            if (countDown === 0 || countDown === 10) {
+                $("#display-timer").empty();
+                $("#display-timer").text("Time Remaining: " + countDown  + " seconds");
+                $("#questions").empty();
+                $("#questions").append(questions[0].questionOne); 
 
-            timerInterval();
-            counter();
+                timerInterval();
+                counter();
+            }
             
         });
-        //stores the value of button a to a var
-        $("#choiceA").on("click", function(){
-            if (countDown > 0 && countDown < 10) {
-                var buttonVal = questions[0].answers[0];
-               
-                if (buttonVal === questions[0].correctAnswer) {
-                    correctAcc++;
-                    $("#correct").empty();
-                    $("#correct").append("Correct Answers: " + correctAcc);
-                    
-                } else {
-                    incorrectAcc++;
-                    $("#incorrect").empty();
-                    $("#incorrect").append("Incorrect Answers: " +  incorrectAcc);
-                    
+        //stores the value of button a to a var and checks that input against the correct answer
+        $("#choiceA").on("click", function() {
+            
+                if (countDown > 0 && countDown < 10) {
+                    var buttonVal = questions[0].answers[0];
+                
+                    if (buttonVal === questions[0].correctAnswer) {
+                        correctAcc++;
+                        $("#correct").empty();
+                        $("#correct").append("Correct Answers: " + correctAcc);
+                    } else {
+                        incorrectAcc++;
+                        $("#incorrect").empty();
+                        $("#incorrect").append("Incorrect Answers: " +  incorrectAcc); 
+                    }
                 }
-            }
+            
         });
 
 
         //stores the value of button b to a var
-        // $("#choiceB").on("click", function(){
-        //     if (countDown > 0 && countDown < 10) {
-        //         var buttonVal = questions[0].answers[1];
-        //         if (buttonVal !== questions[0].correctAnswer) {
-        //             incorrectAcc++;  
-        //             console.log(incorrectAcc);
-        //         }
-        //     }
-        // });
+        $("#choiceB").on("click", function(){
+            if (countDown > 0 && countDown < 10) {
+                var buttonVal = questions[0].answers[1];
+
+                    if (buttonVal === questions[0].correctAnswer) {
+                        correctAcc++;
+                        $("#correct").empty();
+                        $("#correct").append("Correct Answers: " + correctAcc);
+                    } else {
+                        incorrectAcc++;
+                        $("#incorrect").empty();
+                        $("#incorrect").append("Incorrect Answers: " +  incorrectAcc); 
+                    }
+            }
+        });
 
         //stores the value of button c to a var
-        // $("#choiceC").on("click", function(){
-        //     if (countDown > 0 && countDown < 10) {
-        //         var buttonVal = questions[0].answers[2];
-        //         if (buttonVal === questions[0].correctAnswer) {
-        //             correctAcc++;
-        //             console.log("correct = " + correctAcc);
-        //         } else {
-        //             incorrectAcc++;
-        //             console.log("incorrect = " + incorrectAcc);
-        //         }
-        //     }
-        // });
+        $("#choiceC").on("click", function(){
+            if (countDown > 0 && countDown < 10) {
+                var buttonVal = questions[0].answers[2];
+
+                    if (buttonVal === questions[0].correctAnswer) {
+                        correctAcc++;
+                        $("#correct").empty();
+                        $("#correct").append("Correct Answers: " + correctAcc);
+                    } else {
+                        incorrectAcc++;
+                        $("#incorrect").empty();
+                        $("#incorrect").append("Incorrect Answers: " +  incorrectAcc); 
+                    }
+                    
+            }
+        });
+
         //stores the value of button d to a var
-        // $("#choiceD").on("click", function(){
-        //     if (countDown > 0 && countDown < 10) {
-        //         var buttonVal = questions[0].answers[3];
-        //         if (buttonVal === questions[0].correctAnswer) {
-        //             correctAcc++;
-        //             console.log("correct = " + correctAcc);
-        //         } else {
-        //             incorrectAcc++;
-        //             console.log("incorrect = " + incorrectAcc);
-        //         }
-        //     }
-        // });
+        $("#choiceD").on("click", function(){
+            if (countDown > 0 && countDown < 10) {
+                var buttonVal = questions[0].answers[3];
+
+                if (buttonVal === questions[0].correctAnswer) {
+                    correctAcc++;
+                    $("#correct").empty();
+                    $("#correct").append("Correct Answers: " + correctAcc);
+                } else {
+                    incorrectAcc++;
+                    $("#incorrect").empty();
+                    $("#incorrect").append("Incorrect Answers: " +  incorrectAcc); 
+                }
+
+            }
+        });
 
      
      
