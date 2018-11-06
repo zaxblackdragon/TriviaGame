@@ -13,14 +13,14 @@ $(document).ready(function () {
         //  at the end - show results
 
         var timer;
-        var countDown = 20;
+        var countDown = 5;
      
         var correctAcc = 0;
         var incorrect = 0;
         var currentQuestion;
         var questions = [
             {
-                question: "What is your Fav color?",
+                questionOne: "What is your Fav color?",
                 answers: ["blue", "yellow"],
                 correctAnswer: "yellow",
             }
@@ -32,14 +32,23 @@ $(document).ready(function () {
     function timerInterval() {
         timer = setInterval(counter, 1000);
     };
+
+    function resetCountDown() {
+        countDown = 5;
+    }
+
     //counts down the timer
     function counter() {
         countDown--;
+        var choiceButton = $("<button>");
         $("#display-timer").text("Time Left = " + countDown + " sec");
         if (countDown <= 0) {
             clearInterval(timer);
-
+            $("#questions").empty();
+            $("#questions").append("Times up, no more questions."); 
+            resetCountDown();
         }
+
     };
         // starts the countdown
         //  bug in the counter when clicked more than once
@@ -47,11 +56,13 @@ $(document).ready(function () {
             
             $("#display-timer").empty();
             $("#display-timer").text("Time Remaining: " + countDown + " seconds");
+            $("#questions").text(questions[0].questionOne);
             timerInterval();
             counter();
+          
         });
 
-   
+
      
      
  //Mike's code for timerbelow
